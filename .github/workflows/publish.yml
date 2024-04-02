@@ -1,0 +1,64 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+    - '*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.1.1
+
+    - name: Use Node.js 20
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+        cache: npm
+
+    - name: Set up Python
+      uses: actions/setup-python@v5.0.0
+      with:
+        python-version: '3.11'
+
+    - name: Generate client
+      run: |
+        npm install
+        npm run build
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install twine==5.0.0 build==1.2.1
+
+    - name: Create setup.py file
+      run: |
+        cat <<EOT >> setup.py
+        from setuptools import setup
+        from pathlib import Path
+
+        cwd = Path(__file__).parent
+        long_description = (cwd / "README.md").read_text()
+        setup(
+          name="vite-project",
+          version="${{  github.ref_name }}",
+          package_dir={"react_app": "dist"},
+          package_data={"react_app": ["**/*.*"]},
+          long_description=long_description,
+          long_description_content_type="text/markdown"
+        )
+        EOT
+
+    - name: Build package
+      run: |
+        python setup.py sdist -d tmp
+        python -m build --wheel --outdir tmp
+    - name: Publish
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        packages-dir: tmp/

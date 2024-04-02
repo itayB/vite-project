@@ -1,30 +1,49 @@
-# React + TypeScript + Vite
+# A Packaged React Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple demo client for demonsrating how to build & package frontend application into a Python package.
+This template was created by Vitejs.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Usage
 
-## Expanding the ESLint configuration
+You can install this client in your Python backend server:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```shell
+pip install vite-project
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Contribution
+
+### Installation
+
+```shell
+npm install
+npm run build
+```
+
+### Packaging
+
+```shell
+touch setup.py
+```
+
+with the following content:
+
+```python
+from setuptools import setup
+from pathlib import Path
+
+cwd = Path(__file__).parent
+long_description = (cwd / "README.md").read_text()
+
+setup(
+    name="vite-project",
+    version="0.0.1",
+    package_dir={"vite_project": "dist"},
+    package_data={"vite_project": ["**/*.*"]},
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+)
+
+```
