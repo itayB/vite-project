@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python packaging stuff
+setup.py
+tmp
+venv
+vite_project.egg-info

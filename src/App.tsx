@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import viteLogo from '/static/vite.svg'
 import fastapiLogo  from '/static/fastapi.svg';
 import './App.css'
 
@@ -17,9 +17,8 @@ function App() {
       try {
         status = await response.json();
       } catch (err) {
-        console.log(err);
+        console.log(`failed to get backend status. ${err}`);
       }
-      console.log(status);
       setHealth(status['status'] || 'unknown');
     };
     getStatus();
