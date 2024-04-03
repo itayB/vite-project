@@ -38,6 +38,7 @@ jobs:
 
     - name: Create setup.py file
       run: |
+        touch dist/__init__.py
         cat <<EOT >> setup.py
         from setuptools import setup
         from pathlib import Path
