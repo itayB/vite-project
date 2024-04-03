@@ -39,7 +39,7 @@ jobs:
     - name: Create setup.py file
       run: |
         cat <<EOT >> MANIFEST.in
-        include dist
+        recursive-include dist *
         EOT
         cat <<EOT >> setup.py
         from setuptools import setup
