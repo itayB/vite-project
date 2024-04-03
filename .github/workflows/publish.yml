@@ -38,7 +38,9 @@ jobs:
 
     - name: Create setup.py file
       run: |
-        touch dist/__init__.py
+        cat <<EOT >> MANIFEST.in
+        include dist
+        EOT
         cat <<EOT >> setup.py
         from setuptools import setup
         from pathlib import Path
@@ -50,7 +52,6 @@ jobs:
           version="${{  github.ref_name }}",
           package_dir={"react_app": "dist"},
           package_data={"react_app": ["**/*.*"]},
-          include_package_data=True,
           long_description=long_description,
           long_description_content_type="text/markdown"
         )
