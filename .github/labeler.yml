@@ -1,0 +1,3 @@
+pre-commit:
+- changed-files:
+  - any-glob-to-any-file: .pre-commit-config.yaml
