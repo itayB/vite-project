@@ -6,6 +6,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.7](https://github.com/itayB/vite-project/compare/1.0.6...1.0.7) (2025-08-31)
+
+
+### Bug Fixes
+
+* **ci:** labeler ([5bfb1aa](https://github.com/itayB/vite-project/commit/5bfb1aa1050d6e0180babf8741fa859cb7ab6d59))
+
 ## [1.0.6](https://github.com/itayB/vite-project/compare/1.0.5...1.0.6) (2025-08-31)
 
 
