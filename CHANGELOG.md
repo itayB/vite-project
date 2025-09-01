@@ -6,6 +6,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.8](https://github.com/itayB/vite-project/compare/1.0.7...1.0.8) (2025-09-01)
+
+
+### Bug Fixes
+
+* **ci:** packaging upgrade ([90108fa](https://github.com/itayB/vite-project/commit/90108fa580712c2be04f4c2b743503e6783a5603))
+
 ## [1.0.7](https://github.com/itayB/vite-project/compare/1.0.6...1.0.7) (2025-08-31)
 
 
