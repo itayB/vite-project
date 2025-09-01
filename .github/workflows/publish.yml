@@ -45,7 +45,7 @@ jobs:
         cwd = Path(__file__).parent
         long_description = (cwd / "README.md").read_text()
         setup(
-          name="vite-project",
+          name="vite_project",
           version="${{  github.ref_name }}",
           package_dir={"vite_project": "dist"},
           package_data={"vite_project": ["**/*.*"]},
